@@ -1,5 +1,5 @@
 body {
-  background-color: #ecf0f1;
+  background-color: ##ecf0f1;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -8,6 +8,7 @@ body {
   color: #ecf0f1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+
 }
 
 .jumbotron {
@@ -18,9 +19,12 @@ body {
   border-radius: 4px;
 }
 
+
+
 .container.hero-container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  background-color: #d0d3d4;
 }
 
 .container {
@@ -29,11 +33,8 @@ body {
   border-radius: 4px;
 }
 
-.carousel-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.carousel-item {
+  margin-bottom: 20px; /* Add margin-bottom to create space between carousel items */
 }
 
 .footer {
@@ -43,6 +44,7 @@ body {
   text-align: center;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  margin-top: 20px; /* Add margin-top to create space between carousel and footer */
 }
   
   .navbar-brand {
@@ -73,7 +75,8 @@ body {
   }
   
   .hero-container img {
-    border-radius: 8px; /* Optional: Add a border radius to the image */
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow */
   }
   
   .hero-container h2 {
@@ -91,11 +94,14 @@ body {
     transition: all 0.3s ease-in-out;
     background-size: 200% 100%;
     background-image: linear-gradient(to right, #3498db 50%, #2ecc71 50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+    border-radius: 4px;
   }
   
   .hero-container a.btn:hover {
     transform: scale(1.05);
     background-position: right center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Lighter box-shadow on hover */
   }
 
   
