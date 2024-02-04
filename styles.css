@@ -1,11 +1,49 @@
 body {
-    background-color: #ecf0f1;
-  }
-  
-  .navbar {
-    background-color: #3498db;
-    color: #ecf0f1;
-  }
+  background-color: #ecf0f1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  background-color: #3498db;
+  color: #ecf0f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.jumbotron {
+  background-color: #3498db;
+  color: #ecf0f1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.container.hero-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.container {
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
   
   .navbar-brand {
     color: #ecf0f1;
@@ -46,14 +84,20 @@ body {
     color: #555;
   }
   
+
   .hero-container a.btn {
     background-color: #3498db;
     color: #ecf0f1;
+    transition: all 0.3s ease-in-out;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, #3498db 50%, #2ecc71 50%);
   }
   
   .hero-container a.btn:hover {
-    background-color: #2ecc71;
+    transform: scale(1.05);
+    background-position: right center;
   }
+
   
   .container {
     margin-top: 20px;

@@ -1,0 +1,153 @@
+/* public/style.css */
+body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+  }
+  
+  h1 {
+    color: #f44336;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+  }
+  
+  input {
+    padding: 8px;
+    margin: 10px 0;
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .retro-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 3px solid #8B4513; /* Brown color like retro games */
+    background-color: #FFFACD; /* Light yellow background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: black; /* Text color in retro-box */
+  }
+  
+  #spritesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative; /* Added relative positioning */
+  }
+  
+  .sprites-box {
+    border: 3px solid #8B4513; /* Brown color like retro games */
+    padding: 10px;
+    background-color: #FFFACD; /* Light yellow background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .retro-sprite {
+    margin-bottom: 10px;
+    width: 175px; /* Set the width to 175px */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .type-pills {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .type-pill {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Type Colors (Feel free to add more) */
+  .type-normal { background-color: #A8A878; color: #fff; }
+  .type-fire { background-color: #F08030; color: #fff; }
+  .type-water { background-color: #6890F0; color: #fff; }
+  .type-grass { background-color: #78C850; color: #fff; }
+  .type-electric { background-color: #F8D030; color: #000; }
+  .type-ice { background-color: #98D8D8; color: #000; }
+  .type-fighting { background-color: #C03028; color: #fff; }
+  .type-poison { background-color: #A040A0; color: #fff; }
+  .type-ground { background-color: #E0C068; color: #000; }
+  .type-flying { background-color: #A890F0; color: #fff; }
+  .type-psychic { background-color: #F85888; color: #fff; }
+  .type-bug { background-color: #A8B820; color: #fff; }
+  .type-rock { background-color: #B8A038; color: #fff; }
+  .type-ghost { background-color: #705898; color: #fff; }
+  .type-dark { background-color: #705848; color: #fff; }
+  .type-steel { background-color: #B8B8D0; color: #000; }
+  .type-fairy { background-color: #EE99AC; color: #fff; }
+  .type-dragon { background-color: #7038F8; color: #fff; }
+  
+  /* Pixelated Background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('pixel_background.png');
+    background-size: cover;
+  }
+  
+  /* Pixelated Fonts */
+  @font-face {
+    font-family: 'Press Start 2P';
+    src: url('press-start-2p.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .retro-box ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .retro-box li {
+    margin-bottom: 10px; /* Add spacing between list items */
+  }
+
+  /* Positioning for the Back button */
+#backButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+  }
+  
+  #backButton:hover {
+    background-color: #45a049;
+  }
+  

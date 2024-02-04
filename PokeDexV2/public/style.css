@@ -1,0 +1,206 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+}
+
+h1 {
+  color: #f44336;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+}
+
+input {
+  padding: 8px;
+  margin: 10px 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #FFFACD; /* Match the background color of the Pokémon stats page */
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 10px; /* Border radius for the modal content */
+  color: black; /* Text color in the modal content */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column; /* Updated to column layout */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.retro-box {
+  margin-top: 20px;
+  padding: 10px;
+  border: 3px solid #8B4513; /* Brown color like retro games */
+  background-color: #FFFACD; /* Light yellow background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: black; /* Text color in retro-box */
+  border-radius: 10px; /* Border radius for all boxes */
+}
+
+#pokemonStats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#movesContainer {
+  margin-top: 20px;
+}
+
+.retro-sprite {
+  margin-bottom: 10px;
+  width: 175px; /* Set the width to 175px */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Border radius for the sprite */
+}
+
+.type-pills {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* Center the type pills horizontally */
+}
+
+.type-pill {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.moves-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+
+.move-tile {
+  position: relative;
+  width: calc(4 * 20px); /* 4 times greater than the height (20px) */
+  height: 20px;
+  background-color: #FFFACD; /* Light yellow background */
+  border: 3px solid #8B4513; /* Brown color like retro games */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black; /* Text color in move tiles */
+  border-radius: 10px; /* Border radius for move tiles */
+  overflow: hidden; /* Hide overflowing content */
+  white-space: nowrap; /* Prevent text from wrapping */
+  font-size: 75%; /* Reduce font size by 25% */
+}
+
+
+
+
+/* Type Colors (Feel free to add more) */
+.type-normal { background-color: #A8A878; color: #fff; }
+.type-fire { background-color: #F08030; color: #fff; }
+.type-water { background-color: #6890F0; color: #fff; }
+.type-grass { background-color: #78C850; color: #fff; }
+.type-electric { background-color: #F8D030; color: #000; }
+.type-ice { background-color: #98D8D8; color: #000; }
+.type-fighting { background-color: #C03028; color: #fff; }
+.type-poison { background-color: #A040A0; color: #fff; }
+.type-ground { background-color: #E0C068; color: #000; }
+.type-flying { background-color: #A890F0; color: #fff; }
+.type-psychic { background-color: #F85888; color: #fff; }
+.type-bug { background-color: #A8B820; color: #fff; }
+.type-rock { background-color: #B8A038; color: #fff; }
+.type-ghost { background-color: #705898; color: #fff; }
+.type-dark { background-color: #705848; color: #fff; }
+.type-steel { background-color: #B8B8D0; color: #000; }
+.type-fairy { background-color: #EE99AC; color: #fff; }
+
+/* Pixelated Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url('pixel_background.png');
+  background-size: cover;
+}
+
+/* Pixelated Fonts */
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('press-start-2p.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.retro-box ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.retro-box li {
+  margin-bottom: 10px; /* Add spacing between list items */
+}
+
+
+
+
+
