@@ -1,0 +1,73 @@
+body {
+    background-color: #ecf0f1;
+  }
+  
+  .navbar {
+    background-color: #3498db;
+    color: #ecf0f1;
+  }
+  
+  .navbar-brand {
+    color: #ecf0f1;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ecf0f1;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #2ecc71;
+  }
+  
+  .jumbotron {
+    background-color: #3498db;
+    color: #0b0c0c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .jumbotron p {
+    color: #272a2c; /* Add text color to paragraph inside the jumbotron */
+  }
+
+  .hero-container {
+    margin-top: 50px;
+    padding: 50px 0;
+  }
+  
+  .hero-container img {
+    border-radius: 8px; /* Optional: Add a border radius to the image */
+  }
+  
+  .hero-container h2 {
+    color: #3498db;
+  }
+  
+  .hero-container p {
+    color: #555;
+  }
+  
+  .hero-container a.btn {
+    background-color: #3498db;
+    color: #ecf0f1;
+  }
+  
+  .hero-container a.btn:hover {
+    background-color: #2ecc71;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer {
+    background-color: #2ecc71;
+    color: #ecf0f1;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
