@@ -35,7 +35,30 @@
 }
 
 .carousel-item {
-  margin-bottom: 20px; /* Add margin-bottom to create space between carousel items */
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+
+.carousel-content {
+  position: relative;
+}
+
+.carousel-title-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(52, 152, 219, 0.8); /* Adjust the background color and opacity as needed */
+  padding: 10px;
+}
+
+.carousel-title-box h3 {
+  color: #ecf0f1;
+  margin: 0;
 }
 
 .footer {
