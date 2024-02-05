@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     project2.addEventListener("click", function () {
-      window.location.href = "project2.html"; // Replace with the actual URL for Project 2
+      window.location.href = "https://rpggamezoofboofv1.github.io/"; // Replace with the actual URL for Project 2
     });
   
     // Add similar event listeners for other projects as needed
