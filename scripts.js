@@ -26,3 +26,60 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.find('#videoPlayer').attr('src', ''); // Pause the video when modal is closed
     });
   });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+      var rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Function to add animation class if an element is in the viewport
+    function animateHeroContainers() {
+      var heroContainers = document.querySelectorAll('.hero-container');
+      
+      heroContainers.forEach(function (heroContainer) {
+        if (isInViewport(heroContainer)) {
+          heroContainer.classList.add('animate-in');
+        }
+      });
+    }
+
+    // Initial check on page load
+    animateHeroContainers();
+
+    // Check on scroll
+    window.addEventListener('scroll', function () {
+      animateHeroContainers();
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var heroContainers = document.querySelectorAll('.hero-container');
+
+    function checkVisibility() {
+      heroContainers.forEach(function (container) {
+        var rect = container.getBoundingClientRect();
+        var isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+        
+        if (isVisible) {
+          container.classList.add('active');
+        } else {
+          container.classList.remove('active');
+        }
+      });
+    }
+
+    // Initial check on page load
+    checkVisibility();
+
+    // Check visibility on scroll
+    window.addEventListener('scroll', function () {
+      checkVisibility();
+    });
+  });
