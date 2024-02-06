@@ -61,6 +61,11 @@ body {
   color: #ebebeb;
 }
 
+.badge-5 {
+  background-color: #165DD9;
+  color: #ebebeb;
+}
+
 /* Add more custom colors for additional badges as needed */
 
 /* Hover effect and pulsating animation with custom glow colors */
@@ -85,6 +90,12 @@ body {
 .badge-4:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #E084BF;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-5:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #56ABFB;
   animation: pulse 1.5s infinite;
 }
 
