@@ -8,6 +8,7 @@ body {
   color: #ecf0f1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  
 }
 
 .jumbotron {
@@ -18,6 +19,31 @@ body {
   padding: 40px;
   margin-bottom: 20px;
 }
+
+/* Styling for the animated text */
+#animated-text {
+  display: inline-block;
+  border-right: 0.08em solid black; /* Simulates the cursor */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: visible; /* Hide overflowing characters */
+  margin: 0;
+  padding: 0;
+}
+
+/* Blinking cursor animation */
+.cursor-blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+  0%, 100% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: black;
+  }
+}
+
 
 .jumbotron h1 {
   font-weight: bold;

@@ -83,3 +83,17 @@ document.addEventListener("DOMContentLoaded", function () {
       checkVisibility();
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const text = "Ryan Pothier";
+    const delay = 100; // Delay in milliseconds between each character
+
+    let index = 0;
+    const intervalId = setInterval(function () {
+      document.getElementById("animated-text").textContent += text[index];
+      index++;
+      if (index === text.length) {
+        clearInterval(intervalId);
+      }
+    }, delay);
+  });
