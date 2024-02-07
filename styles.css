@@ -118,6 +118,20 @@ body {
   color: #ebebeb;
 }
 
+.badge-11 {
+  background-color: #FFD840;
+  color: #ebebeb;
+}
+
+.badge-12 {
+  background-color: #11758F;
+  color: #ebebeb;
+}
+
+.badge-13 {
+  background-color: #242c54;
+  color: #ebebeb;
+}
 /* Add more custom colors for additional badges as needed */
 
 .skills-pills > .badge {
@@ -181,6 +195,24 @@ body {
 .badge-10:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px #8BDEFC;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-11:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #488BBE;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-12:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #5ED7F6;
+  animation: pulse 1.5s infinite;
+}
+
+.badge-13:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #737ad8;
   animation: pulse 1.5s infinite;
 }
 
