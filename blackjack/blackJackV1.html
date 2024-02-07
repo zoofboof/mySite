@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #2c3e50;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      #game-container {
+        text-align: center;
+      }
+
+      #result {
+        margin-top: 20px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .hand {
+        display: flex;
+        margin-top: 10px;
+      }
+
+      .card {
+        width: 100px;
+        height: 150px;
+        border-radius: 10px;
+        margin: 0 5px;
+        position: relative;
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+
+      .card .back {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(180deg);
+      }
+
+      .total {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+
+      .chips {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+
+      .bet-options {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+      }
+    </style>
+    <title>Blackjack Game</title>
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>Blackjack Game</h1>
+      <div id="player-hand">
+        <h2>Player's Hand:</h2>
+        <div class="hand" id="player-cards"></div>
+        <div class="total" id="player-total"></div>
+        <div class="chips" id="player-chips"></div>
+      </div>
+      <div id="dealer-hand">
+        <h2>Dealer's Hand:</h2>
+        <div class="hand" id="dealer-cards"></div>
+        <div class="total" id="dealer-total"></div>
+      </div>
+      <div id="result"></div>
+      <div class="bet-options" id="bet-buttons">
+        <button onclick="placeBet(10)">Bet $10</button>
+        <button onclick="placeBet(50)">Bet $50</button>
+        <button onclick="placeBet(100)">Bet $100</button>
+      </div>
+      <button id="hit-button" onclick="hit()" style="display: none">Hit</button>
+      <button id="stand-button" onclick="stand()" style="display: none">
+        Stand
+      </button>
+    </div>
+
+    <script>
+      let playerHand = [];
+      let dealerHand = [];
+      let deckId;
+      let playerChips = 1000;
+      let betAmount = 0;
+      let hideDealerFirstCard = true; // Flag to control visibility of the dealer's first card
+
+      function startGame() {
+        // Reset result
+        document.getElementById("result").textContent = "";
+
+        // Clear hands
+        playerHand = [];
+        dealerHand = [];
+        hideDealerFirstCard = true;
+        displayHands();
+
+        // Shuffle and deal
+        fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+          .then((response) => response.json())
+          .then((data) => {
+            deckId = data.deck_id;
+            dealInitialCards();
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function dealInitialCards() {
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`)
+          .then((response) => response.json())
+          .then((data) => {
+            playerHand = [data.cards[0], data.cards[1]];
+            dealerHand = [data.cards[2], data.cards[3]];
+
+            displayHands();
+
+            // Enable/disable buttons
+            updateButtons(true);
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function displayHands() {
+        displayPlayerHand();
+        displayDealerHand();
+      }
+
+      function displayPlayerHand() {
+        const playerCardsContainer = document.getElementById("player-cards");
+        const playerTotalElement = document.getElementById("player-total");
+        playerCardsContainer.innerHTML = playerHand
+          .map(
+            (card) =>
+              `<div class="card"><img src="${card.image}" alt="${card.code}"></div>`
+          )
+          .join("");
+        const playerTotal = calculateHandValue(playerHand);
+        playerTotalElement.textContent = `Total: ${playerTotal}`;
+      }
+
+      function displayDealerHand() {
+        const dealerCardsContainer = document.getElementById("dealer-cards");
+        const dealerTotalElement = document.getElementById("dealer-total");
+        dealerCardsContainer.innerHTML = dealerHand
+          .map((card, index) => {
+            const isHidden = hideDealerFirstCard && index === 0;
+            return `<div class="card${isHidden ? " hidden" : ""}">
+                        <img src="${
+                          isHidden
+                            ? "https://deckofcardsapi.com/static/img/back.png"
+                            : card.image
+                        }" alt="${card.code}">
+                        <img class="back" src="https://deckofcardsapi.com/static/img/back.png" alt="Card Back">
+                    </div>`;
+          })
+          .join("");
+        const dealerTotal = calculateHandValue(dealerHand);
+        dealerTotalElement.textContent = `Total: ${dealerTotal}`;
+      }
+
+      function hit() {
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+          .then((response) => response.json())
+          .then((data) => {
+            playerHand.push(data.cards[0]);
+            displayPlayerHand();
+
+            if (calculateHandValue(playerHand) > 21) {
+              loseBet("You busted! Dealer wins.");
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function stand() {
+        hideDealerFirstCard = false; // Reveal the dealer's first card
+        displayDealerHand();
+
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+          .then((response) => response.json())
+          .then((data) => {
+            dealerHand.push(data.cards[0]);
+            displayDealerHand();
+
+            if (calculateHandValue(dealerHand) < 17) {
+              stand(); // Dealer hits until the hand value is 17 or more
+            } else {
+              determineWinner();
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function determineWinner() {
+        const playerTotal = calculateHandValue(playerHand);
+        const dealerTotal = calculateHandValue(dealerHand);
+
+        if (dealerTotal > 21 || playerTotal > dealerTotal) {
+          winBet("You win!");
+        } else if (playerTotal < dealerTotal) {
+          loseBet("Dealer wins!");
+        } else {
+          endGame("It's a tie!");
+        }
+      }
+
+      function winBet(message) {
+        playerChips += betAmount * 2;
+        endGame(message);
+      }
+
+      function loseBet(message) {
+        playerChips -= betAmount;
+        endGame(message);
+      }
+
+      function endGame(message) {
+        document.getElementById("result").textContent = message;
+        updateChips();
+        updateButtons(false);
+      }
+
+      function updateChips() {
+        document.getElementById(
+          "player-chips"
+        ).textContent = `Chips: $${playerChips}`;
+      }
+
+      function updateButtons(enabled) {
+        document.getElementById("bet-buttons").style.display = enabled
+          ? "none"
+          : "flex";
+        document.getElementById("hit-button").style.display = enabled
+          ? "block"
+          : "none";
+        document.getElementById("stand-button").style.display = enabled
+          ? "block"
+          : "none";
+      }
+
+      function calculateHandValue(hand) {
+        let sum = 0;
+        let hasAce = false;
+
+        for (const card of hand) {
+          const value =
+            card.value === "ACE"
+              ? 11
+              : isNaN(card.value)
+              ? 10
+              : parseInt(card.value);
+          sum += value;
+
+          if (card.value === "ACE") {
+            hasAce = true;
+          }
+        }
+
+        if (hasAce && sum > 21) {
+          sum -= 10; // Convert Ace from 11 to 1
+        }
+
+        return sum;
+      }
+
+      function placeBet(amount) {
+        if (playerChips >= amount) {
+          betAmount = amount;
+          playerChips -= betAmount;
+          updateChips();
+          startGame();
+        } else {
+          alert("Not enough chips to place this bet!");
+        }
+      }
+    </script>
+  </body>
+</html>
