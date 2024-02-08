@@ -374,6 +374,9 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Lighter box-shadow on hover */
   }
 
+  .video-thumbnail {
+    margin-bottom: 20px; /* Adjust the value as needed */
+  }
   
   .container {
     margin-top: 20px;
