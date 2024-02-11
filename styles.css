@@ -268,6 +268,8 @@ body {
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  
+
 }
 
 .carousel-item img {
@@ -374,9 +376,16 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Lighter box-shadow on hover */
   }
 
-  .video-thumbnail {
-    position: relative; /* Ensure proper positioning of the tags */
-    margin-bottom: 20px; /* Adjust the value as needed */
+  .video-thumbnail img {
+    max-width: 100%; /* Ensure the image does not exceed the width of its container */
+    max-height: 100%; /* Ensure the image does not exceed the height of its container */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+    border-radius: 8px; /* Rounded corners for the image */
+  }
+  
+  /* Ensure proper alignment of last row */
+  .video-thumbnail:last-child {
+    margin-right: 0; /* Remove right margin for last video thumbnail in a row */
   }
   
   /* Style for thumbnail image */
@@ -406,6 +415,12 @@ body {
     margin-right: 5px; /* Add space between individual tags */
     color: white; /* Text color for tags */
   }
+
+  .wider-gallery {
+    max-width: 1200px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the gallery horizontally */
+  }
+  
   
 
   .container {
