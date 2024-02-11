@@ -51,6 +51,7 @@
     </div>
     </nav>
 
+
   <!-- Portfolio Page Content -->
   <div class="container">
     <h2 class="mt-5">Portfolio</h2>
@@ -63,6 +64,24 @@
     </div>
     <div class="row row-cols-1 row-cols-md-3" id="video-thumbnails">
       <!-- Video thumbnails will be dynamically added here -->
+    </div>
+  </div>
+
+  <!-- Video Player Modal -->
+  <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoPlayerModalLabel">Video Player</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Embedded YouTube video player -->
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" id="youtubeVideoPlayer" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

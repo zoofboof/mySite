@@ -376,10 +376,15 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Lighter box-shadow on hover */
   }
 
+  .video-thumbnail {
+    position: relative; /* Ensure proper positioning of the tags */
+    margin-bottom: 20px; /* Vertical spacing between video thumbnails */
+  }
+  
+  /* Style for thumbnail image */
   .video-thumbnail img {
-    max-width: 100%; /* Ensure the image does not exceed the width of its container */
-    max-height: 100%; /* Ensure the image does not exceed the height of its container */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Rounded corners for the image */
   }
   
@@ -388,12 +393,7 @@ body {
     margin-right: 0; /* Remove right margin for last video thumbnail in a row */
   }
   
-  /* Style for thumbnail image */
-  .video-thumbnail img {
-    width: 100%;
-    border-radius: 8px; /* Rounded corners for the image */
-  }
-  
+
   /* Add hover effect to video thumbnails */
   .video-thumbnail:hover {
     transform: scale(1.05); /* Increase the size of the thumbnail on hover */
@@ -438,4 +438,6 @@ body {
     padding: 20px 0;
     text-align: center;
   }
+
+  
   
