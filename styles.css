@@ -375,9 +375,39 @@ body {
   }
 
   .video-thumbnail {
+    position: relative; /* Ensure proper positioning of the tags */
     margin-bottom: 20px; /* Adjust the value as needed */
   }
   
+  /* Style for thumbnail image */
+  .video-thumbnail img {
+    width: 100%;
+    border-radius: 8px; /* Rounded corners for the image */
+  }
+  
+  /* Add hover effect to video thumbnails */
+  .video-thumbnail:hover {
+    transform: scale(1.05); /* Increase the size of the thumbnail on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance drop shadow on hover */
+  }
+  
+  /* Style for tags */
+  .tags {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* Adjust padding as needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for the tags */
+    border-radius: 0 0 8px 8px; /* Rounded corners for the bottom */
+  }
+  
+  .tags .badge {
+    margin-right: 5px; /* Add space between individual tags */
+    color: white; /* Text color for tags */
+  }
+  
+
   .container {
     margin-top: 20px;
   }
