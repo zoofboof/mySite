@@ -107,52 +107,56 @@ document.addEventListener("DOMContentLoaded", function () {
     { src: "assets/portfolio1.JPG", alt: "Video 1", tags: ["tag1", "tag2"], youtubeId: "video1-youtube-id" },
     { src: "assets/portfolio1.JPG", alt: "Video 2", tags: ["tag2"], youtubeId: "video2-youtube-id" },
     { src: "assets/portfolio1.JPG", alt: "Video 3", tags: ["tag1", "tag3"], youtubeId: "video3-youtube-id" },
+    { src: "assets/portfolio1.JPG", alt: "Video 3", tags: ["tag1", "tag3"], youtubeId: "video3-youtube-id" },
     // Add more video data as needed
   ];
   
-  // Function to initialize video thumbnails
-  function initializeVideoThumbnails() {
-    const videoThumbnailsContainer = document.getElementById("video-thumbnails");
-    videoThumbnailsContainer.innerHTML = ""; // Clear existing content
-  
-    videos.forEach(video => {
-      const thumbnail = document.createElement("div");
-      thumbnail.classList.add("col-md-4", "video-thumbnail");
-      thumbnail.dataset.tags = video.tags.join(" "); // Store tags as dataset attribute
-      thumbnail.dataset.youtubeId = video.youtubeId; // Store YouTube video ID as dataset attribute
-  
-      thumbnail.innerHTML = `
-        <img src="${video.src}" alt="${video.alt}">
-        <div class="tags">
-          ${video.tags.map(tag => `<span class="badge bg-primary">${tag}</span>`).join("")}
-        </div>
-      `;
-  
-      thumbnail.addEventListener("click", function() {
-        const youtubeId = this.dataset.youtubeId;
-        const youtubeVideoPlayer = document.getElementById("youtubeVideoPlayer");
-        youtubeVideoPlayer.src = `https://www.youtube.com/embed/${youtubeId}`;
-        $('#videoPlayerModal').modal('show'); // Show the modal
-      });
-  
-      videoThumbnailsContainer.appendChild(thumbnail);
+ // Function to initialize video thumbnails
+function initializeVideoThumbnails() {
+  const videoThumbnailsContainer = document.getElementById("video-thumbnails");
+  videoThumbnailsContainer.innerHTML = ""; // Clear existing content
+
+  videos.forEach((video, index) => {
+    const thumbnail = document.createElement("div");
+    thumbnail.classList.add("col-md-4", "video-thumbnail");
+    thumbnail.dataset.tags = video.tags.join(" "); // Store tags as dataset attribute
+    thumbnail.dataset.youtubeId = video.youtubeId; // Store YouTube video ID as dataset attribute
+
+    thumbnail.innerHTML = `
+      <img src="${video.src}" alt="${video.alt}">
+      <div class="tags">
+        ${video.tags.map(tag => `<span class="badge bg-primary">${tag}</span>`).join("")}
+      </div>
+    `;
+
+    thumbnail.addEventListener("click", function() {
+      const youtubeId = this.dataset.youtubeId;
+      const youtubeVideoPlayer = document.getElementById("youtubeVideoPlayer");
+      youtubeVideoPlayer.src = `https://www.youtube.com/embed/${youtubeId}`;
+      $('#videoPlayerModal').modal('show'); // Show the modal
     });
-  }
-  
-  // Function to filter videos by tag
-  function filterVideos(tag) {
-    const videoThumbnails = document.querySelectorAll(".video-thumbnail");
-  
-    videoThumbnails.forEach(thumbnail => {
-      if (tag === "all" || thumbnail.dataset.tags.includes(tag)) {
-        thumbnail.style.display = "block"; // Show thumbnails with selected tag or show all thumbnails
-      } else {
-        thumbnail.style.display = "none"; // Hide thumbnails without selected tag
-      }
-    });
-  }
-  
-  // Initialize video thumbnails when the page loads
-  document.addEventListener("DOMContentLoaded", function () {
-    initializeVideoThumbnails();
+
+    // Apply delay to each thumbnail to stagger the animation
+    thumbnail.style.animationDelay = `${index * 0.2}s`; // Increased delay to 0.2 seconds
+
+    videoThumbnailsContainer.appendChild(thumbnail);
   });
+}
+
+// Function to filter videos by tag
+function filterVideos(tag) {
+  const videoThumbnails = document.querySelectorAll(".video-thumbnail");
+
+  videoThumbnails.forEach(thumbnail => {
+    if (tag === "all" || thumbnail.dataset.tags.includes(tag)) {
+      thumbnail.style.display = "block"; // Show thumbnails with selected tag or show all thumbnails
+    } else {
+      thumbnail.style.display = "none"; // Hide thumbnails without selected tag
+    }
+  });
+}
+
+// Initialize video thumbnails with animation when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  initializeVideoThumbnails();
+});

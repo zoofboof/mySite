@@ -376,17 +376,31 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Lighter box-shadow on hover */
   }
 
-  .video-thumbnail {
-    position: relative; /* Ensure proper positioning of the tags */
-    margin-bottom: 20px; /* Vertical spacing between video thumbnails */
+/* Custom animation for video thumbnails */
+@keyframes fallAnimation {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
   }
-  
-  /* Style for thumbnail image */
-  .video-thumbnail img {
-    width: 100%; /* Ensure the image fills the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Rounded corners for the image */
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
+}
+
+/* Style for video thumbnails */
+.video-thumbnail {
+  position: relative; /* Ensure proper positioning of the tags */
+  margin-bottom: 20px; /* Vertical spacing between video thumbnails */
+  transition: transform 0.2s ease; /* Add transition effect to transform property */
+}
+
+/* Style for thumbnail image */
+.video-thumbnail img {
+  width: 100%; /* Ensure the image fills the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for the image */
+}
   
   /* Ensure proper alignment of last row */
   .video-thumbnail:last-child {
@@ -395,10 +409,9 @@ body {
   
 
   /* Add hover effect to video thumbnails */
-  .video-thumbnail:hover {
-    transform: scale(1.05); /* Increase the size of the thumbnail on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance drop shadow on hover */
-  }
+.video-thumbnail:hover {
+  transform: scale(1.05); /* Scale up the thumbnail slightly on hover */
+}
   
   /* Style for tags */
   .tags {
