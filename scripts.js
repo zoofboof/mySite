@@ -104,8 +104,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // Sample data for video thumbnails with tags
   const videos = [
-    { src: "assets/portfolio1.JPG", alt: "Video 1", tags: ["Power Apps", "UI"], youtubeId: "rUjEEfjtqlA" },
-    { src: "assets/portfolio1.JPG", alt: "Video 2", tags: ["Power Apps", "UI"], youtubeId: "hiz93fHTksQ" },
+    { src: "assets/Thumbnails/mq2.jpg", alt: "Video 1", tags: ["Power Apps", "UI"], youtubeId: "rUjEEfjtqlA" },
+    { src: "assets/Thumbnails/mqdefault.jpg", alt: "Video 2", tags: ["Power Apps", "UI"], youtubeId: "hiz93fHTksQ" },
     { src: "assets/portfolio1.JPG", alt: "Video 3", tags: ["Power Apps", "Design"], youtubeId: "B5wDKvanVIo" },
     { src: "assets/portfolio1.JPG", alt: "Video 4", tags: ["Power Apps", "Games"], youtubeId: "FeGHK6yqmw4" },
     { src: "assets/portfolio1.JPG", alt: "Video 5", tags: ["Power Apps", "Games"], youtubeId: "fnKDJZ_SOP8" },
